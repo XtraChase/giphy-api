@@ -1,0 +1,90 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: url(../images/french-stucco.png);
+  background-color: rgb(8, 50, 78);
+}
+
+.container {
+  margin: 1% 5% 0% 5%;
+}
+
+#button-input {
+  margin: 10px 0px 0px 30px;
+  padding: 2px 5px 2px 5px;
+  font-family: "Lato", sans-serif;
+  border-style: none;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+#add-button {
+  padding: 5px 10px 5px 10px;
+  margin: 0px 0px 0px 5px;
+  font-family: "Lato", sans-serif;
+  border-radius: 12px;
+  border-style: none;
+  font-size: 0.8em;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: (1px 1px 3px rgba(0, 0, 0, 0.2));
+  box-shadow: (1px 1px 5px rgba(0, 0, 0, 0.6));
+}
+
+#add-button:hover {
+  transform: translatey(-1px);
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.4);
+}
+
+#add-button:active {
+  transform: translateY(-0.2px);
+  box-shadow: 0 5px 50px rgba(0, 0, 0, 0.4);
+}
+
+button {
+  padding: 5px 10px 5px 10px;
+  margin: 20px 0px 10px 10px;
+  font-family: "Lato", sans-serif;
+  border-radius: 12px;
+  border-style: none;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: (1px 1px 3px rgba(0, 0, 0, 0.2));
+  box-shadow: (1px 1px 5px rgba(0, 0, 0, 0.6));
+  @media screen and (max-width: 640px) {
+    font-size: 1em;
+  }
+}
+
+button:hover {
+  transform: translatey(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+button:active {
+  transform: translateY(-0.5px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+}
+
+// .gifs {
+//   margin: 5% 5% 5% 5%;
+// }
+
+.gif {
+  margin: 0px 30px 30px 0px;
+}
+
+.gif:hover {
+  cursor: pointer;
+  transform: translatey(-2px);
+  -webkit-filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+}
+
+.gif:active {
+  transform: translateY(-0.5px);
+  -webkit-filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.4));
+}
