@@ -1,5 +1,6 @@
 let gifButton = document.querySelector(".gif-button");
 let search = document.getElementById("button-input");
+var offset = 0;
 var colors = [
   "rgb(255,102,102)",
   "rgb(0,255,153)",
@@ -25,11 +26,13 @@ $("#add-button").on("click", function() {
 // Event listener for our gif-button
 $(".col").on("click", ".gif-button", function() {
   // Storing our giphy API URL for random images
-  let selection = this.innerHTML;
-  let queryURL =
-    "https://api.giphy.com/v1/gifs/random?api_key=3Ehu1I4sEu61pvmKpYtbNslNFGxntvAW&count=10&tag=" +
-    selection;
-
+  var selection = this.innerHTML;
+  var queryURL =
+    "https://api.giphy.com/v1/gifs/search?q=" +
+    selection +
+    "&api_key=3Ehu1I4sEu61pvmKpYtbNslNFGxntvAW&limit=10&offset=" +
+    offset;
+  offset += 10;
   // Perfoming an AJAX GET request to our queryURL
   $.ajax({
     url: queryURL,
@@ -37,22 +40,24 @@ $(".col").on("click", ".gif-button", function() {
   })
     // After the data from the AJAX request comes back
     .then(function(response) {
-      // Saving the image_original_url property
-      var imageUrl = response.data.images.fixed_height_still.url;
+      // storing the data from the AJAX request in the results variable
+      var results = response.data;
 
-      // Creating and storing an image tag
-      var image = $("<img>" + "</br>" + "</br>");
-
-      // Setting the Image src attribute to imageUrl
-      image.attr("src", imageUrl);
-      image.attr("alt", gifButton.innerHTML);
-      image.attr("class", "gif");
-      image.attr("data-state", "still");
-      image.attr("data-still", response.data.images.fixed_height_still.url);
-      image.attr("data-animate", response.data.images.fixed_height.url);
-
-      // Prepending the image to the images div
-      $(".images").prepend(image);
+      // Looping through each result item
+      for (var i = 0; i < results.length; i++) {
+        var div = $("<div>");
+        var image = $("<img>");
+        // Setting the Image src attribute to imageUrl
+        image.attr("src", results[i].images.fixed_height_still.url);
+        image.attr("alt", gifButton.innerHTML);
+        image.attr("class", "gif");
+        image.attr("data-state", "still");
+        image.attr("data-still", results[i].images.fixed_height_still.url);
+        image.attr("data-animate", results[i].images.fixed_height.url);
+        div.append(image);
+        // Prepending the image to the images div
+        $(".images").prepend(div);
+      }
     });
 });
 
