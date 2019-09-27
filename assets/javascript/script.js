@@ -13,13 +13,12 @@ $("#add-button").on("click", function() {
 
 //       ******* CREATE GIFS *******
 // Event listener for our gif-button
-$(".gif-button").on("click", function() {
+$(".col").on("click", ".gif-button", function() {
   // Storing our giphy API URL for random images
   let selection = this.innerHTML;
   let queryURL =
     "https://api.giphy.com/v1/gifs/random?api_key=3Ehu1I4sEu61pvmKpYtbNslNFGxntvAW&tag=" +
     selection;
-  console.log(this);
 
   // Perfoming an AJAX GET request to our queryURL
   $.ajax({
@@ -49,7 +48,7 @@ $(".gif-button").on("click", function() {
 
   //animate on click
   //FIXME
-  $(".images").on("click", function() {
+  $(document).on("click", ".gif", function() {
     console.log("click");
     // The attr jQuery method allows us to get or set the
     // value of any attribute on our HTML element
