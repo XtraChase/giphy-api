@@ -1,5 +1,12 @@
-let gifButton = document.querySelector(".gif-button").innerHTML;
+let gifButton = document.querySelector(".gif-button");
 let search = document.getElementById("button-input");
+var colors = [
+  "rgb(255,102,102)",
+  "rgb(0,255,153)",
+  "rgb(0,204,255)",
+  "rgb(255,243,92)",
+  "rgb(153,51,255)"
+];
 
 //       ******* SEARCH GIFS *******
 $("#add-button").on("click", function() {
@@ -8,6 +15,9 @@ $("#add-button").on("click", function() {
   var newButton = document.createElement("button");
   newButton.innerHTML = search.value;
   newButton.setAttribute("class", "gif-button");
+  //random color picker
+  newButton.style.backgroundColor =
+    colors[Math.floor(Math.random() * colors.length)];
   $(".col").prepend(newButton);
 });
 
@@ -17,7 +27,7 @@ $(".col").on("click", ".gif-button", function() {
   // Storing our giphy API URL for random images
   let selection = this.innerHTML;
   let queryURL =
-    "https://api.giphy.com/v1/gifs/random?api_key=3Ehu1I4sEu61pvmKpYtbNslNFGxntvAW&tag=" +
+    "https://api.giphy.com/v1/gifs/random?api_key=3Ehu1I4sEu61pvmKpYtbNslNFGxntvAW&count=10&tag=" +
     selection;
 
   // Perfoming an AJAX GET request to our queryURL
@@ -25,18 +35,17 @@ $(".col").on("click", ".gif-button", function() {
     url: queryURL,
     method: "GET"
   })
-
     // After the data from the AJAX request comes back
     .then(function(response) {
       // Saving the image_original_url property
-      var imageUrl = response.data.images.fixed_height.url;
+      var imageUrl = response.data.images.fixed_height_still.url;
 
       // Creating and storing an image tag
       var image = $("<img>" + "</br>" + "</br>");
 
       // Setting the Image src attribute to imageUrl
       image.attr("src", imageUrl);
-      image.attr("alt", gifButton);
+      image.attr("alt", gifButton.innerHTML);
       image.attr("class", "gif");
       image.attr("data-state", "still");
       image.attr("data-still", response.data.images.fixed_height_still.url);
@@ -45,27 +54,23 @@ $(".col").on("click", ".gif-button", function() {
       // Prepending the image to the images div
       $(".images").prepend(image);
     });
+});
 
-  //animate on click
-  //FIXME
-  $(document).on("click", ".gif", function() {
-    console.log("click");
-    // The attr jQuery method allows us to get or set the
-    // value of any attribute on our HTML element
-    var state = $(".gif").attr("data-state");
-
-    if (state === "still") {
-      // If the clicked image's state is still,
-      // update its src attribute to what its data-animate value is.
-      // Then, set the image's data-state to animate
-      $(".gif").attr("src", $(".gif").attr("data-animate"));
-      $(".gif").attr("data-state", "animate");
-      console.log("animate");
-    } else {
-      // Else set src to the data-still value
-      $(".gif").attr("src", $(".gif").attr("data-still"));
-      $(".gif").attr("data-state", "still");
-      console.log("still");
-    }
-  });
+//animate on click
+$(document).on("click", ".gif", function() {
+  console.log("click");
+  // The attr jQuery method allows us to get or set the
+  // value of any attribute on our HTML element
+  var state = $(this).attr("data-state");
+  if (state === "still") {
+    // If the clicked image's state is still,
+    // update its src attribute to what its data-animate value is.
+    // Then, set the image's data-state to animate
+    $(this).attr("src", $(this).attr("data-animate"));
+    $(this).attr("data-state", "animate");
+  } else {
+    // Else set src to the data-still value
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
 });

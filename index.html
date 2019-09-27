@@ -21,23 +21,44 @@
     />
   </head>
   <body>
-    <div class="container">
-      <form id="button-form row">
-        <label for="button-input"></label>
-        <input type="text" id="button-input" />
-        <input id="add-button" type="submit" value="Search Giphy" />
-      </form>
-    </div>
-    <div class="container">
-      <div class="col">
-        <button class="gif-button">dogs</button>
-        <button class="gif-button">cats</button>
-        <button class="gif-button">birds</button>
+    <div class="page-container">
+      <header>
+        <div class="container">
+          <form id="button-form row">
+            <label for="button-input"></label>
+            <input type="text" id="button-input" />
+            <input id="add-button" type="submit" value="Search Giphy" />
+          </form>
+        </div>
+        <div class="container">
+          <div class="col buttons">
+            <button class="gif-button" id="nature">nature</button>
+            <button class="gif-button" id="animals">animals</button>
+            <button class="gif-button" id="dogs">dogs</button>
+            <button class="gif-button" id="cats">cats</button>
+            <button class="gif-button" id="sports">sports</button>
+            <button class="gif-button" id="music">music</button>
+            <button class="gif-button" id="gaming">gaming</button>
+            <button class="gif-button" id="movies">movies</button>
+            <button class="gif-button" id="celebrities">celebrities</button>
+            <button class="gif-button" id="politics">politics</button>
+            <button class="gif-button" id="weird">weird</button>
+            <button class="gif-button" id="reactions">reactions</button>
+            <button class="gif-button" id="science">science</button>
+            <button class="gif-button" id="art">art & design</button>
+          </div>
+        </div>
+      </header>
+      <div class="container">
+        <div class="images row"></div>
       </div>
-    </div>
-
-    <div class="container gifs">
-      <div class="images row"></div>
+      <footer>
+        <img
+          id="attribution"
+          src="./assets/images/PoweredBy_200_Horizontal_Light-Backgrounds_With_Logo.gif"
+          alt="Giphy Attribution"
+        />
+      </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript" src="assets/javascript/script.js"></script>
