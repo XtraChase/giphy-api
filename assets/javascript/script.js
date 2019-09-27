@@ -12,14 +12,19 @@ var colors = [
 //       ******* SEARCH GIFS *******
 $("#add-button").on("click", function() {
   event.preventDefault();
-  //on click create button from input text
-  var newButton = document.createElement("button");
-  newButton.innerHTML = search.value;
-  newButton.setAttribute("class", "gif-button");
-  //random color picker
-  newButton.style.backgroundColor =
-    colors[Math.floor(Math.random() * colors.length)];
-  $(".col").prepend(newButton);
+  if (search.value.length > 0) {
+    console.log("Added Button: " + search.value);
+    //on click create button from input text
+    var newButton = document.createElement("button");
+    newButton.innerHTML = search.value;
+    newButton.setAttribute("class", "gif-button");
+    //random color picker
+    newButton.style.backgroundColor =
+      colors[Math.floor(Math.random() * colors.length)];
+    $(".col").prepend(newButton);
+  } else {
+    console.log("Invalid Search");
+  }
 });
 
 //       ******* CREATE GIFS *******
