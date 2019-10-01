@@ -6,6 +6,7 @@
 body {
   background: url(../images/french-stucco.png);
   background-color: #181818;
+  font-family: "Lato", sans-serif;
 }
 
 .page-container {
@@ -28,7 +29,6 @@ header {
 #button-input {
   margin: 10px 0px 0px -30px;
   padding: 2px 5px 2px 5px;
-  font-family: "Lato", sans-serif;
   border-style: none;
   background-color: rgba(255, 255, 255, 0.8);
 }
@@ -42,7 +42,6 @@ header {
 #add-button {
   padding: 5px 10px 5px 10px;
   margin: 0px 0px 0px 5px;
-  font-family: "Lato", sans-serif;
   border-radius: 12px;
   border-style: none;
   font-size: 0.8em;
@@ -166,7 +165,6 @@ input:checked + .slider:before {
 button {
   padding: 5px 10px 5px 10px;
   margin: 10px 0px 0px 10px;
-  font-family: "Lato", sans-serif;
   border-radius: 12px;
   border-style: none;
   font-size: 1.2em;
