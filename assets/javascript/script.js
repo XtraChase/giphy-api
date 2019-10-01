@@ -14,7 +14,7 @@ $(document).on("click", ".gif-button, #add-button", function() {
   event.preventDefault();
   if (search.value.length > 0) {
     var selection = search.value;
-    console.log("Added Button: " + selection);
+    console.log("New Search: " + selection);
     //on click create button from input text
     var newButton = document.createElement("button");
     newButton.innerHTML = search.value;
@@ -25,11 +25,13 @@ $(document).on("click", ".gif-button, #add-button", function() {
     $(".col").prepend(newButton);
     //clear search
     search.value = "";
+  } else {
+    selection = this.innerHTML;
   }
 
   //       ******* CREATE GIFS *******
   // Storing our giphy API URL for random images
-  var selection = document.querySelector(".gif-button").innerHTML;
+
   var queryURL =
     "https://api.giphy.com/v1/gifs/search?q=" +
     selection +
