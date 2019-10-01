@@ -10,10 +10,11 @@ var colors = [
 ];
 
 //       ******* SEARCH GIFS *******
-$("#add-button").on("click", function() {
+$(document).on("click", ".gif-button, #add-button", function() {
   event.preventDefault();
   if (search.value.length > 0) {
-    console.log("Added Button: " + search.value);
+    var selection = search.value;
+    console.log("Added Button: " + selection);
     //on click create button from input text
     var newButton = document.createElement("button");
     newButton.innerHTML = search.value;
@@ -22,16 +23,13 @@ $("#add-button").on("click", function() {
     newButton.style.backgroundColor =
       colors[Math.floor(Math.random() * colors.length)];
     $(".col").prepend(newButton);
-  } else {
-    console.log("Invalid Search");
+    //clear search
+    search.value = "";
   }
-});
 
-//       ******* CREATE GIFS *******
-// Event listener for our gif-button
-$(".col").on("click", ".gif-button", function() {
+  //       ******* CREATE GIFS *******
   // Storing our giphy API URL for random images
-  var selection = this.innerHTML;
+  var selection = document.querySelector(".gif-button").innerHTML;
   var queryURL =
     "https://api.giphy.com/v1/gifs/search?q=" +
     selection +
